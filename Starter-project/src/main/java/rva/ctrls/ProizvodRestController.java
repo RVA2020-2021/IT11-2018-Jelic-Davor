@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import rva.jpa.Proizvod;
 import rva.repository.ProizvodRepository;
 
 @CrossOrigin
 @RestController
+@Api(tags = {"Proizvod CRUD operacije"})
 public class ProizvodRestController {
 
 	@Autowired
@@ -31,21 +34,25 @@ public class ProizvodRestController {
 	private JdbcTemplate jdbcTemplate;
 	
 	@GetMapping("proizvod")
+	@ApiOperation(value = "Vraæa kolekciju svih proizvoda iz baze podataka")
 	public Collection<Proizvod> getProizvodi(){
 		return proizvodRepository.findAll();
 	}
 	
 	@GetMapping("proizvod/{id}")
+	@ApiOperation(value = "Vraæa proizvod u odnosu na prosleðenu vrednost path varijable id")
 	public Proizvod getProizvod(@PathVariable("id") Integer id) {
 		return proizvodRepository.getOne(id);
 	}
 	
 	@GetMapping("proizvodNaziv/{naziv}")
+	@ApiOperation(value = "Vraæa kolekciju proizvoda koji imaju naziv koji sadrži vrednost prosleðenu u okviru path varijable naziv")
 	public Collection<Proizvod> getProizvodByName(@PathVariable("naziv") String naziv){
 		return proizvodRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@PostMapping("proizvod")
+	@ApiOperation(value = "Dodaje novi proizvod u bazu podataka")
 	public ResponseEntity<Proizvod> insertProizvod(@RequestBody Proizvod proizvod){
 		if(!proizvodRepository.existsById(proizvod.getId())) {
 			proizvodRepository.save(proizvod);
@@ -55,6 +62,7 @@ public class ProizvodRestController {
 	}
 	
 	@PutMapping("proizvod")
+	@ApiOperation(value = "Modifikuje postojeæi proizvod")
 	public ResponseEntity<Proizvod> updateProizvod(@RequestBody Proizvod proizvod){
 		if(!proizvodRepository.existsById(proizvod.getId())) {
 			return new ResponseEntity<Proizvod>(HttpStatus.NO_CONTENT);
@@ -65,6 +73,7 @@ public class ProizvodRestController {
 	
 	//@Transactional
 	@DeleteMapping("proizvod/{id}")
+	@ApiOperation(value = "Briše proizvod u odnosu na vrednost prosleðene path varijable id")
 	public ResponseEntity<Proizvod> deleteProizvod(@PathVariable("id") Integer id){
 		if(!proizvodRepository.existsById(id)) {
 			return new ResponseEntity<Proizvod>(HttpStatus.NO_CONTENT);
