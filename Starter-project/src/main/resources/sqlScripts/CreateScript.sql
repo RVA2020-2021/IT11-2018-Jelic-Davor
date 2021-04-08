@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS proizvod;
+DROP TABLE IF EXISTS proizvodjac;
+DROP TABLE IF EXISTS stavka_racuna;
+DROP TABLE IF EXISTS racun;
+
 DROP SEQUENCE IF EXISTS proizvod_seq;
 DROP SEQUENCE IF EXISTS proizvodjac_seq;
 DROP SEQUENCE IF EXISTS stavka_racuna_seq;

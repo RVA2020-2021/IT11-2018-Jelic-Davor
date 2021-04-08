@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import rva.jpa.Proizvodjac;
 import rva.jpa.Racun;
 import rva.repository.ProizvodjacRepository;
 
+@CrossOrigin
 @RestController
 public class ProizvodjacRestController {
 	
@@ -65,6 +67,7 @@ public class ProizvodjacRestController {
 		if(!proizvodjacRepository.existsById(id)) {
 			return new ResponseEntity<Racun>(HttpStatus.NO_CONTENT);
 		}
+		jdbcTemplate.execute("DELETE FROM proizvod WHERE proizvodjac=" + id);
 		proizvodjacRepository.deleteById(id);
 		if(id == -100) {
 			jdbcTemplate.execute("INSERT INTO \"proizvodjac\" (\"id\", \"naziv\", \"adresa\", \"kontakt\") " 
