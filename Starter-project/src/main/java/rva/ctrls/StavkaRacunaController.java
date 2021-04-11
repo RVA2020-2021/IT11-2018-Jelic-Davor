@@ -3,6 +3,8 @@ package rva.ctrls;
 import java.math.BigDecimal;
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -83,6 +85,7 @@ public class StavkaRacunaController {
 		return new ResponseEntity<StavkaRacuna>(HttpStatus.OK);
 	}
 	
+	@Transactional
 	@DeleteMapping("stavkaRacuna/{id}")
 	@ApiOperation(value = "Briše stavku raèuna u odnosu na vrednost prosleðene path varijable id")
 	public ResponseEntity<StavkaRacuna> deleteStavkaRacuna(@PathVariable("id") Integer id){
@@ -90,6 +93,7 @@ public class StavkaRacunaController {
 			return new ResponseEntity<StavkaRacuna>(HttpStatus.NO_CONTENT);
 		}
 		stavkaRacunaRepository.deleteById(id);
+		stavkaRacunaRepository.flush();
 		if(id==-100) {
 			jdbcTemplate.execute("INSERT INTO \"stavka_racuna\" (\"id\", \"redni_broj\", \"kolicina\", \"jedinica_mere\", \"cena\", \"racun\", \"proizvod\") "
 					+ "VALUES (-100, 100, 1, 'kom', 1000, 1, 1)");

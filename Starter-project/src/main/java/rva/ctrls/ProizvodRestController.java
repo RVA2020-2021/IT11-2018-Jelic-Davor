@@ -71,7 +71,7 @@ public class ProizvodRestController {
 		return new ResponseEntity<Proizvod>(HttpStatus.OK);
 	}
 	
-	//@Transactional
+	@Transactional
 	@DeleteMapping("proizvod/{id}")
 	@ApiOperation(value = "Briše proizvod u odnosu na vrednost prosleðene path varijable id")
 	public ResponseEntity<Proizvod> deleteProizvod(@PathVariable("id") Integer id){
@@ -80,6 +80,7 @@ public class ProizvodRestController {
 		}
 		jdbcTemplate.execute("DELETE FROM stavka_racuna WHERE proizvod = " + id);
 		proizvodRepository.deleteById(id);
+		proizvodRepository.flush();
 		if(id == -100) {
 			jdbcTemplate.execute("INSERT INTO \"proizvod\" (\"id\", \"naziv\", \"proizvodjac\") " 
 		+ "VALUES (-100, 'Test naziv', 1)");
