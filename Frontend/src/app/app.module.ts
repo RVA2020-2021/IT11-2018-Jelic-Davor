@@ -34,6 +34,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { StavkaRacunaDialogComponent } from './components/dialogs/stavka-racuna-dialog/stavka-racuna-dialog.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatNativeDateModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

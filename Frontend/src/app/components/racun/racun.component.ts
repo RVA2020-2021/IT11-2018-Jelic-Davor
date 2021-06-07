@@ -52,7 +52,7 @@ export class RacunComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(RacunDialogComponent, {data: {id,datum,nacinPlacanja}});
     dialogRef.componentInstance.flag = flag;
     dialogRef.afterClosed().subscribe(res => {
-      if(res == 1) {
+      if(res != null) {
         this.loadData();
       }
     })

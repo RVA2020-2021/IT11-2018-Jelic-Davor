@@ -13,7 +13,11 @@
     </div>
     <div class="Form">
       <mat-form-field>
-        <input matInput placeholder="NacinPlacanja" [(ngModel)] = "data.nacinPlacanja" name="nacinPlacanja" [disabled]="flag == 3" required>
+        <mat-select [(ngModel)]="data.nacinPlacanja" placeholder="Način plaćanja" name="nacinPlacanja" [compareWith]="compareTo" [disabled]="flag == 3">
+          <mat-option *ngFor="let nacinPlacanja of naciniPlacanja" [value]="nacinPlacanja">
+            {{ nacinPlacanja }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div mat-dialog-actions>

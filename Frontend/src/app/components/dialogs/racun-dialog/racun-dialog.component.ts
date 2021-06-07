@@ -12,6 +12,7 @@ import { RacunService } from 'src/app/services/racun.service';
 export class RacunDialogComponent implements OnInit {
 
   public flag: number;
+  naciniPlacanja: String[] = ["kartica","gotovina"]
 
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<RacunDialogComponent>,
@@ -22,9 +23,13 @@ export class RacunDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  compareTo(a,b){
+    return a.id == b.id;
+  }
+
   public add(): void {
     this.racunService.addRacun(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno dodat račun: ' + this.data.id, 'OK', {
+      this.snackBar.open('Uspešno dodat račun', 'OK', {
         duration: 2500
       })
     }),

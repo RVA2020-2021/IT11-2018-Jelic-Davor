@@ -1,0 +1,8 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('../../../images/profilna_slika.jpg');
+  background-size: cover;
+}

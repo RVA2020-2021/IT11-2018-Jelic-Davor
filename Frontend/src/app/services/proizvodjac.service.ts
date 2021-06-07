@@ -21,7 +21,7 @@ export class ProizvodjacService {
   }
 
   public updateProizvodjac(proizvodjac: Proizvodjac): Observable<any> {
-    return this.httpClient.post(`${Proizvodjac_URL}`, proizvodjac);
+    return this.httpClient.put(`${Proizvodjac_URL}`, proizvodjac);
   }
 
   public deleteProizvodjac(id: number): Observable<any> {
