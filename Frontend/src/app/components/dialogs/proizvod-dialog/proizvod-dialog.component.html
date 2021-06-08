@@ -10,7 +10,7 @@
     </div>
     <div class="Form">
       <mat-form-field>
-        <mat-select [(ngModel)]="data.proizvodjac" placeholder="Proizvodjac" name="proizvodjac" [compareWith]="compareTo" [disabled]="flag == 3">
+        <mat-select [(ngModel)]="data.proizvodjac" placeholder="Proizvodjac" name="proizvodjac" [compareWith]="compareTo" [disabled]="flag == 3" required>
           <mat-option *ngFor="let proizvodjac of proizvodjaci" [value]="proizvodjac">
             {{ proizvodjac.naziv }}
           </mat-option>

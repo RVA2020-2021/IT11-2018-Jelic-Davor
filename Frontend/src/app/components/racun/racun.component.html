@@ -4,7 +4,7 @@
 
 <div class="container mat-elavation-z8">
   <mat-form-field>
-    <input matInput placeholder="Pretraga artikala" (keyup)="applyFilter($event.target.value)">
+    <input matInput placeholder="Pretraga računa" (keyup)="applyFilter($event.target.value)">
   </mat-form-field>
   <mat-table #table matSort [dataSource]="dataSource" class="mat-cell">
     <!--ID-->

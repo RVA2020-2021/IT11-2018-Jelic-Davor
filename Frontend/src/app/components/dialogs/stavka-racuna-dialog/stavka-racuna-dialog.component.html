@@ -7,7 +7,7 @@
 
     <div class="form">
       <mat-form-field>
-        <mat-select [(ngModel)]="data.proizvod" placeholder="Proizvod" name="proizvod" [compareWith]="compareTo" [disabled]="flag == 3">
+        <mat-select [(ngModel)]="data.proizvod" placeholder="Proizvod" name="proizvod" [compareWith]="compareTo" [disabled]="flag == 3" required>
           <mat-option *ngFor="let proizvod of proizvodi" [value]="proizvod">
             {{ proizvod.naziv }}
           </mat-option>
@@ -17,19 +17,19 @@
 
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Količina" [(ngModel)]="data.kolicina" name="kolicina" [disabled]="flag == 3">
+        <input matInput placeholder="Količina" [(ngModel)]="data.kolicina" name="kolicina" [disabled]="flag == 3" required>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Jedinica mere" [(ngModel)]="data.jedinicaMere" name="jedinicaMere" [disabled]="flag == 3">
+        <input matInput placeholder="Jedinica mere" [(ngModel)]="data.jedinicaMere" name="jedinicaMere" [disabled]="flag == 3" required>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Cena" [(ngModel)]="data.cena" name="cena" [disabled]="flag == 3">
+        <input matInput placeholder="Cena" [(ngModel)]="data.cena" name="cena" [disabled]="flag == 3" required>
       </mat-form-field>
     </div>
 

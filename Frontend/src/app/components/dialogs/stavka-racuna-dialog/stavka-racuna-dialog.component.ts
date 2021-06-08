@@ -48,7 +48,7 @@ export class StavkaRacunaDialogComponent implements OnInit, OnDestroy {
 
   public add(): void {
     this.stavkaRacunaService.addStavkaRacuna(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno dodata stavka računa: ' + this.data.id, 'OK', {
+      this.snackBar.open('Uspešno dodata stavka računa: ' + this.data.proizvod.naziv, 'OK', {
         duration: 2500
       })
     }),
@@ -62,7 +62,7 @@ export class StavkaRacunaDialogComponent implements OnInit, OnDestroy {
 
   public update(): void {
     this.stavkaRacunaService.updateStavkaRacuna(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno modifikovana stavka računa: ' + this.data.id, 'OK', {
+      this.snackBar.open('Uspešno modifikovana stavka računa: ' + this.data.proizvod.naziv, 'OK', {
         duration: 2500
       })
     }),
@@ -76,7 +76,7 @@ export class StavkaRacunaDialogComponent implements OnInit, OnDestroy {
 
   public delete(): void {
     this.stavkaRacunaService.deleteStavkaRacuna(this.data.id).subscribe(() => {
-      this.snackBar.open('Uspešno obrisana stavka računa: ' + this.data.id, 'OK', {
+      this.snackBar.open('Uspešno obrisana stavka računa: ' + this.data.proizvod.naziv, 'OK', {
         duration: 2500
       })
     }),
