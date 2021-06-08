@@ -28,6 +28,7 @@ export class RacunDialogComponent implements OnInit {
   }
 
   public add(): void {
+    console.log(this.data);
     this.racunService.addRacun(this.data).subscribe(() => {
       this.snackBar.open('Uspešno dodat račun', 'OK', {
         duration: 2500

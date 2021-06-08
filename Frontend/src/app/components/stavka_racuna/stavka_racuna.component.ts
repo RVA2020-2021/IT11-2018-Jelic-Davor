@@ -76,7 +76,7 @@ export class StavkaRacunaComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     dialogRef.afterClosed().subscribe( res => {
-      if(res != null){
+      if(res === 1){
         this.loadData();
       }
     })

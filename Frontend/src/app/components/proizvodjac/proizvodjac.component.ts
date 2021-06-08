@@ -51,7 +51,7 @@ export class ProizvodjacComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ProizvodjacDialogComponent, {data: {id,naziv,adresa,kontakt}});
     dialogRef.componentInstance.flag = flag;
     dialogRef.afterClosed().subscribe(res => {
-      if(res != null) {
+      if(res === 1) {
         this.loadData();
       }
     })
