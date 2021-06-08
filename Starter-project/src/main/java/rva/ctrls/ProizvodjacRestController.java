@@ -79,6 +79,7 @@ public class ProizvodjacRestController {
 		if(!proizvodjacRepository.existsById(id)) {
 			return new ResponseEntity<Racun>(HttpStatus.NO_CONTENT);
 		}
+		jdbcTemplate.execute("DELETE FROM stavka_racuna WHERE proizvod in (select id from proizvod where proizvodjac=" + id + ")");
 		jdbcTemplate.execute("DELETE FROM proizvod WHERE proizvodjac=" + id);
 		proizvodjacRepository.deleteById(id);
 		proizvodjacRepository.flush();
